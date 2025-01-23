@@ -1,0 +1,151 @@
+/* Переменные для тем */
+:root {
+    --bg-color-light: #ffffff;
+    --bg-color-dark: #333333;
+    --text-color-light: #000000;
+    --text-color-dark: #ffffff;
+    --text-color-red: red;
+    --text-color-darkred: darkred;
+    --transition-duration: 0.3s;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Общие стили */
+body {
+    background-color: var(--bg-color-light);
+    color: var(--text-color-light);
+    transition: background-color var(--transition-duration), color var(--transition-duration);
+}
+
+/* Тёмная тема */
+body.dark-theme {
+    background-color: var(--bg-color-dark);
+    color: var(--text-color-dark);
+}
+
+.container {
+    margin: auto;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: clamp(1rem, 5vw, 3rem);
+    gap: 2rem;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    overflow-y: auto;
+}
+
+
+/* Стили для переключателя */
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.theme-toggle p {
+    font-size: clamp(14px, 2vw, 16px);
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    border-radius: 24px;
+    transition: background-color var(--transition-duration);
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 3px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform var(--transition-duration);
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.title-h1 {
+    font-size: clamp(20px, 5vw, 40px);
+}
+
+.city {
+    width: auto;
+    border-radius: 1rem;
+    padding: 0.5rem 2rem;
+    font-size: 1rem;
+}
+
+.weather-btn {
+    background: var(--bg-color-dark);
+    color: var(--text-color-dark);
+    padding: 0.5rem 1rem;
+    border: none;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+body.dark-theme .weather-btn {
+    background: var(--text-color-dark);
+    color: var(--bg-color-dark);
+}
+
+.weather-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.weather-info h2 {
+    font-size: clamp(18px, 2vw, 30px);
+}
+
+.weather-info p {
+    font-size: clamp(14px, 2vw, 18px);
+}
+
+.weather-info p span{
+    font-size: clamp(16px, 2vw, 20px);
+    color: var(--text-color-darkred);
+}
+
+body.dark-theme .weather-info p span{
+    color: var(--text-color-red);
+}
+
